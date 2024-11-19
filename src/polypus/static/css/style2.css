@@ -1,0 +1,41 @@
+/* Appliquer un style personnalisé à la classe form-select */
+.form-select {
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;  /* Ajuste les espacements */
+    font-size: 1rem;                            /* Taille de la police */
+    line-height: 1.5;                           /* Hauteur de ligne */
+    border: 1px solid #ced4da;                  /* Bordure de base */
+    border-radius: 0.375rem;                    /* Coins arrondis */
+    background-color: #fff;                     /* Couleur de fond */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23000' d='M2 0L0 2h4L2 0zM2 5L0 3h4L2 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 8px 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+                       display: block/* Supprime l'apparence par défaut */
+}
+
+/* Ajuste la couleur de la bordure au survol */
+.form-select:hover {
+    border-color: #86b7fe;
+}
+
+/* Style pour quand le select est en focus */
+.form-select:focus {
+    border-color: #86b7fe;                       /* Couleur de bordure au focus */
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Ombre autour du select au focus */
+}
+
+/* Désactiver l'élément */
+.form-select:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+/* Style pour les options à l'intérieur */
+.form-select option {
+    color: #495057;                              /* Couleur du texte des options */
+}

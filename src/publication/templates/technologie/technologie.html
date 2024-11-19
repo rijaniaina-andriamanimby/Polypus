@@ -1,0 +1,515 @@
+{% extends "acceuil/index.html" %} {% load static %} {% block "titre" %}
+Technologie de construction | Polypus Corporation S.A {% endblock %} {% block
+mobile %} {% for adresses in adresse %}
+<ul class="sub-menu">
+  <li><a href="#">{{ adresses.nomVille }}</a></li>
+</ul>
+{% endfor %} {% endblock %} {% block lg %} {% for adresses in adresse %}
+<li>
+  <a href="{% url 'projetDetailPublication' adresses.nomVille %}"
+    >{{ adresses.nomVille }}</a
+  >
+</li>
+{% endfor %} {% endblock %} {% block "contenu" %}
+<!--==============================
+    Breadcumb
+============================== -->
+<div class="container th-container2">
+  <div
+    class="breadcumb-wrapper"
+    data-bg-src="{% static 'assets/img/polypus/techno/technologie-couverture.png' %}"
+  >
+    <h1 class="breadcumb-title fade-in">Téchnologie de construction</h1>
+    <ul class="breadcumb-menu mb-2 fade-in">
+      <li><a href="index.html">Acceuil</a></li>
+      <li>Téchnologie</li>
+    </ul>
+    <div class="container th-container">
+      <a href="{% url 'acceuilPublication' %}#projet" class="th-btn fade-in"
+        ><span class="line left"></span> Visiter nos projets<span
+          class="line"
+        ></span
+      ></a>
+    </div>
+  </div>
+</div>
+<!--==============================
+Service Area  
+==============================-->
+<section class="space-top">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-xl-6 align-self-center wow fadeInRight"
+        data-wow-delay="0.2s"
+      >
+        <h2 class="sec-title mb-40">
+          Les panneaux
+          <span class="text-theme">POLYPUS ?</span>
+        </h2>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-between">
+      <div class="col-xl-7 col-lg-6">
+        <div class="project-details">
+          <h2 class="sec-title fw-normal mb-40">
+            Panneau
+            <span class="text-theme">Simple</span>
+          </h2>
+          <div class="project-content">
+            <p>
+              Le cœur du système est le panneau simple en polystyrène expansé,
+              délimitée par une double maille en acier galvanisé reliés par des
+              connecteurs, qui est complété sur le site avec deux couches de
+              béton projeté. Il est idéal pour les murs, les cloisons, les murs
+              de séparation, les murs rideaux, les planchers et les toits. Il
+              est utilisé comme une structure portante, pour les bâtiments
+              jusqu’à 4 étages, avec l’application d’enduit structurel des deux
+              côtés. Idéal pour les cloisons, les cloisons et les murs-rideaux
+              dans les bâtiments neufs ou rénovés; pour le bouchage et les
+              cloisons dans les grands bâtiments industriels et commerciaux;
+              comme coffrage isolant pour les toits et planchers. Il est idéal
+              pour les murs, les cloisons, les murs de séparation, les murs
+              rideaux, les planchers et les toits..
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-6 mb-5">
+        <div class="mb-5 mb-lg-0">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/polypus/techno/panneau-simple.png' %}"
+            alt="project"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex">
+      <div class="col-xl-7 col-lg-6">
+        <div class="project-details">
+          <h2 class="sec-title fw-normal mb-40">
+            Panneau
+            <span class="text-theme">Double</span>
+          </h2>
+          <div class="project-content">
+            <p>
+              Le panneau double se compose de deux panneaux simples,
+              convenablement formés et reliés les uns aux autres par des doubles
+              connecteurs horizontaux qui créent à l’intérieur un espace à
+              remplir avec du béton de caractéristiques et de résistance
+              appropriées. L’épaisseur de la coulée de béton à l’intérieur du
+              panneau double, ainsi que les caractéristiques du béton lui-même,
+              seront déterminées en fonction des exigences structurelles. Le
+              panneau est en􀀁n terminé avec l’application de l’induit externe.
+              Le double panneau, fourni avec une armure certifiée par un
+              laboratoire oficiel conformément à la loi 5/11/1971 n.1086 – D.M.
+              01/09/1996, respecte les exigences sur les structures en béton
+              armé selon EUROCODE 2 (EC2). Idéal pour les murs en béton armé
+              tels que murs portants et contreterre.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-6 mb-5">
+        <div class="mb-5 mb-lg-0">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/polypus/techno/panneau-double.png' %}"
+            alt="project"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex">
+      <div class="col-xl-7 col-lg-6">
+        <div class="project-details">
+          <h2 class="sec-title fw-normal mb-40">
+            Panneau
+            <span class="text-theme">Escalier</span>
+          </h2>
+          <div class="project-content">
+            <p>
+              Le panneau escalier se compose d’un bloc de polystyrène expansé,
+              façonné selon les exigences de conception, recouvert de deux
+              mailles métalliques assemblées avec des 􀀁ls d’acier soudés par
+              électrofusion. Ce panneau, convenablement renforcé et complété
+              avec coulage sur place dans les espaces appropriés, il est utilisé
+              pour la réalisation de rampes d’escalier à compléter à l’extérieur
+              avec de l’enduit traditionnel, des carrelages, ou d’autres
+              matériaux. Le panneau escalier est caractérisé par son
+              installation facile et rapide, combinée avec une légèreté et une
+              résistance structurelle particulières. Panneau pour une escalier
+              légère et résistante à réaliser.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-6 mb-5">
+        <div class="mb-5 mb-lg-0">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/polypus/techno/panneau-escalier.png' %}"
+            alt="project"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex">
+      <div class="col-xl-7 col-lg-6">
+        <div class="project-details">
+          <h2 class="sec-title fw-normal mb-40">
+            Panneau pour
+            <span class="text-theme">Palier</span>
+          </h2>
+          <div class="project-content">
+            <p>
+              Panneau pour la construction des paliers, des planchers et des
+              plaques renforcées bidirectionnellement. Il donne une isolation
+              continue à l’intrados du panneau. Panneau pour palier Le panneau
+              palier est une excellente solution pour créer des paliers
+              adjacents aux escaliers. Le panneau pour palier peut également
+              être utilisé pour toute dalle en béton armé à renforcer dans deux
+              directions, avec l’avantage d’un poids plus modeste par rapport à
+              une dalle pleine et la présence d’une isolation continue qui sert
+              égaleme
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-6 mb-5">
+        <div class="mb-5 mb-lg-0">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/polypus/techno/panneau-palier.png' %}"
+            alt="project"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex">
+      <div class="col-xl-7 col-lg-6">
+        <div class="project-details">
+          <h2 class="sec-title fw-normal mb-40">
+            Panneau
+            <span class="text-theme">Courbé</span>
+          </h2>
+          <div class="project-content">
+            <p>
+              Le panneau courbé est un panneau spécial, de grandes dimensions et
+              épaisseur, produit en usine dans une forme plate et arrangé pour
+              être incurvé par la suite sur le chantier. Le panneau ainsi
+              réalisé est facilement transportable puis courbé sur site sous la
+              forme établie manuellement, ou semi automatiquement, à l’aide d’un
+              équipement pneumatique. L’avantage du panneau incurvé Emmedue est
+              sa capacité à couvrir de grandes surfaces rapidement et
+              facilement.L’avantage du panneau courbé est sa capacité à couvrir
+              de grandes surfaces à formes géométriques incurvées de manière
+              rapide et avec facilité. Aussi, il permet aux architectes de faire
+              preuve d’une plus grande créativité et d’appliquer de nouvelles
+              formes géométriques. La surface incurvée des panneaux améliore la
+              circulation de l’air, en contribuant ainsi à la réduction de
+              l’éventuelle humidité et en optimisant le rendement thermique des
+              bâtiments.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-6 mb-5">
+        <div class="mb-5 mb-lg-0">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/polypus/techno/panneau-courber-plancher.png' %}"
+            alt="project"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex">
+      <div class="col-xl-7 col-lg-6">
+        <div class="project-details">
+          <h2 class="sec-title fw-normal mb-40">
+            Panneau
+            <span class="text-theme">Plancher</span>
+          </h2>
+          <div class="project-content">
+            <p>
+              Panneau pour créer des planchers et des toits avec des poutres en
+              béton armé, avec des avantages considérables en termes de
+              légèreté, d’isolation et de vitesse de montage. Avec le panneau
+              plancher composé d’une plaque moulée en polystyrène expansé, les
+              planchers et la toiture des bâtiments sont créés avec l’ajout
+              d’acier supplémentaire dans des poutres spéciales et suivi par la
+              coulée du mélange de ciment. Idéal pour planchers et les toîts
+              avec poutres en béton armé.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-6 mb-5">
+        <div class="mb-5 mb-lg-0">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/polypus/techno/panneau-courber-plancher.png' %}"
+            alt="project"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="space">
+  <div class="container" id="avantages">
+    <div class="row">
+      <div
+        class="col-xl-6 align-self-center wow fadeInRight"
+        data-wow-delay="0.2s"
+      >
+        <h2 class="sec-title mb-40">
+          Les
+          <span class="text-theme">Avantages ?</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row gy-30">
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/installation-facile.png' %}"
+              height="128px"
+              width="128px"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">01</p>
+          <h3 class="service-card_title">Installation rapide</h3>
+          <p class="service-card_text">
+            Grâce aux avancées technologiques, à des méthodes de construction
+            plus efficaces et à une planification minutieuse, le processus
+            d’installation est plus rapide que jamais. Les matériaux
+            préfabriqués, tels que les murs préconstruits et les éléments de
+            toiture, peuvent être fabriqués en usine, ce qui réduit
+            considérablement le temps nécessaire sur le chantier. De plus,
+            l’utilisation de machines et d’équipements modernes, tels que les
+            grues et les outils automatisés, permet d’accélérer toutes les
+            étapes de la construction, de la fondation à la toiture.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/pieces-de-monnaie.png' %}"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">02</p>
+          <h3 class="service-card_title">Coût et rentabilité</h3>
+          <p class="service-card_text">
+            Cette rapidité d’installation offre de nombreux avantages, notamment
+            la réduction des coûts de main-d’œuvre, la minimisation des retards
+            dus aux intempéries, et la possibilité pour les propriétaires de
+            s’installer plus rapidement dans leur nouvelle maison. Cela crée une
+            expérience globalement plus pratique et agréable.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/panneau-solaire-au-soleil.png' %}"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">03</p>
+          <h3 class="service-card_title">
+            Durabilité et efficacité énergétique
+          </h3>
+          <p class="service-card_text">
+            L’efficacité énergétique et la durabilité sont des éléments
+            fondamentaux dans la construction d’une maison moderne. L’efficacité
+            énergétique se traduit par la capacité de la maison à réduire au
+            minimum sa consommation d’énergie pour le chauffage, la
+            climatisation, l’éclairage et les appareils électroménagers. Cela
+            passe par l’utilisation de matériaux isolants de haute qualité, de
+            fenêtres à double vitrage, de systèmes de chauffage et de
+            refroidissement performants, ainsi que d’éclairages LED.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/manutention(1).png' %}"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">04</p>
+          <h3 class="service-card_title">Manutention sans effort</h3>
+          <p class="service-card_text">
+            Cette pratique inclut l’utilisation de chariots élévateurs, de
+            grues, de convoyeurs, de systèmes de levage, voire même de robots
+            automatisés, qui permettent de soulever et de transporter des
+            charges lourdes de manière sécurisée et sans effort physique
+            excessif. Cette approche réduit les risques de blessures, accélère
+            le rythme de travail et améliore la qualité de la construction en
+            minimisant les erreurs causées par la fatigue. Elle contribue ainsi
+            à optimiser le processus de construction d’une maison tout en
+            préservant la santé et le bien-être des travailleurs sur le
+            chantier.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/durable.png' %}"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">05</p>
+          <h3 class="service-card_title">Résistance aux cyclones</h3>
+          <p class="service-card_text">
+            Tout d’abord, la structure de la maison est conçue pour être solide
+            et robuste, en utilisant des matériaux tels que le béton armé et des
+            éléments structuraux renforcés. Les toits sont souvent conçus pour
+            résister aux vents violents, avec des attaches de toiture solides et
+            des formes aérodynamiques qui réduisent la prise au vent. De plus,
+            les fenêtres et les portes sont équipées de protections contre les
+            impacts, réduisant ainsi les risques de débris volants pénétrant à
+            l’intérieur.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/isolation-phonique-icone.png' %}"
+              height="128px"
+              width="128px"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">06</p>
+          <h3 class="service-card_title">Isolation acoustique et sismique</h3>
+          <p class="service-card_text">
+            Sur le plan acoustique, cette maison intègre des matériaux et des
+            techniques spéciales pour réduire la transmission du son. Cela
+            signifie que les bruits extérieurs tels que le trafic ou les voisins
+            sont atténués, créant ainsi une atmosphère calme et relaxante à
+            l’intérieur. De plus, sur le plan sismique, la maison est équipée de
+            fondations robustes, de structures résistantes aux secousses et
+            d’autres dispositifs de sécurité pour minimiser les dommages en cas
+            de tremblement de terre, assurant ainsi la sécurité des occupants.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/isolation-thermique-icone.png' %}"
+              height="128px"
+              width="128px"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">07</p>
+          <h3 class="service-card_title">Isolation thermique</h3>
+          <p class="service-card_text">
+            La maison est équipée d’un système de protection contre les
+            variations de température extérieure, visant à maintenir un climat
+            intérieur confortable et stable. Des panneaux en polystyrène sont
+            intégrés dans les murs, les plafonds et les planchers pour réduire
+            la perte de chaleur en hiver et le gain de chaleur en été.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/durable.png' %}"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">08</p>
+          <h3 class="service-card_title">Résistance aux feux</h3>
+          <p class="service-card_text">
+            Des matériaux de construction ignifuges, tels que des plaques de
+            plâtre résistantes au feu et des revêtements de toiture
+            incombustibles, sont utilisés pour limiter la propagation du feu à
+            l’intérieur de la structure. De plus, l’installation de systèmes de
+            détection et d’extinction des incendies, comme les détecteurs de
+            fumée, les extincteurs et les systèmes de gicleurs automatiques,
+            permet une réaction rapide en cas d’incendie.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="service-card">
+          <div class="service-card_icon">
+            <img
+              class="svg-img"
+              src="{% static 'assets/img/polypus/techno/isolation-phonique-icone.png' %}"
+              height="128px"
+              width="128px"
+              alt="service image"
+            />
+          </div>
+          <p class="service-card_num">09</p>
+          <h3 class="service-card_title">Isolation phonique</h3>
+          <p class="service-card_text">
+            Plusieurs éléments d’isolation phonique sont intégrés dans la
+            construction de la maison. Cela inclut l’utilisation de matériaux
+            spéciaux tels que la laine de roche et les panneaux insonorisants,
+            qui sont placés dans les murs, les plafonds et les planchers pour
+            absorber les vibrations sonores. De plus, des fenêtres à double
+            vitrage dotées de joints d’étanchéité efficaces et des portes
+            solides sont installées pour réduire la pénétration du bruit
+            extérieur.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-between mt-3">
+      <div class="col-xl-6 mb-xl-0 wow fadeInLeft" data-wow-delay="0.2s">
+        <div>
+          <img
+            src="{% static 'assets/img/polypus/techno/avantage1.png' %}"
+            alt="Avantages"
+          />
+        </div>
+      </div>
+      <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+        <div>
+          <img
+            src="{% static 'assets/img/polypus/techno/avantage2.png' %}"
+            alt="Avantages"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'index.html' %} {% block titre %} Réservation | Polypus Corporation
+S.A {% endblock %} {% block recherche %} {% endblock %} {% block grand_titre %}
+Gestion des villas {% endblock %} {% block contenu %}
+
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      <div
+        class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center"
+      >
+        <h2 class="ml-lg-2">Listes des Images</h2>
+      </div>
+      <div
+        class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center"
+      >
+        <a href="{% url 'ajouterDesImages' %}" class="btn btn-success">
+          <i class="material-icons">&#xE147;</i>
+          <span>Ajouter</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped table-hover text-center">
+    <thead>
+      <tr>
+        <th>Identifiant</th>
+        <th>Image</th>
+        <th>Chemin</th>
+        <th>Villa</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for images in image %}
+      <tr>
+        <td>{{images.id}}</td>
+        <td><img src="{{images.image.url}}" width="100px" height="100px" /></td>
+        <td>{{images.image}}</td>
+        <td>{{images.villaConcerner}}</td>
+
+        <td>
+          <a href="{% url 'modifierUneImage' images.id %}">
+            <i class="material-icons" data-toggle="tooltip" title="Edit"
+              >&#xE254;</i
+            ></a
+          >
+          <a href="#" onclick="confirmDelete('{{images.id}}')">
+            <i class="material-icons" data-toggle="tooltip" title="Delete"
+              >&#xE872;</i
+            ></a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="clearfix">
+    <ul class="pagination">
+      {% if image.has_previous %}
+      <li class="page-item">
+        <a href="?page={{image.previous_page_number}}">Précédent</a>
+      </li>
+      {% endif %} {% for num in image.paginator.page_range %}
+      <li class="page-item {% if image.number == num %}active{% endif %}">
+        <a href="?page={{num}}" class="page-link">{{num}}</a>
+      </li>
+      {% endfor %} {% if image.has_next %}
+      <li class="page-item">
+        <a href="?page={{image.next_page_number}}" class="page-link">Suivant</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+<script>
+  function confirmDelete(id) {
+    // Personnalisation de la boîte de dialogue
+    console.log(id);
+    Swal.fire({
+      title: "Êtes-vous sûr ?",
+      text: "Cette action est irréversible. Voulez-vous vraiment supprimer ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, supprimer",
+      cancelButtonText: "Annuler",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Redirection vers l'URL de suppression si la confirmation est donnée
+        window.location.href = "{% url 'supprimerUneImage' 0 %}".replace(
+          "0",
+          id
+        );
+      }
+    });
+  }
+</script>
+
+{% endblock %}

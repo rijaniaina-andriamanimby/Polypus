@@ -1,0 +1,60 @@
+{% load static %}
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>
+      <img src="{% static 'img/logo.png' %}" class="img-fluid" /><span
+        >Polypus S.A</span
+      >
+    </h3>
+  </div>
+  <ul class="list-unstyled components">
+    <li>
+      <a href="{% url 'pageAcceuil' %}"
+        ><i class="material-icons">home</i>Evaluation</a
+      >
+    </li>
+
+    <li>
+      <a href="{% url 'listEmployer' %}"
+        ><i class="material-icons">groups</i><span>employer</span></a
+      >
+    </li>
+
+    <li>
+      <a href="{% url 'listDesClient' %}"
+        ><i class="material-icons">person</i><span> client</span></a
+      >
+    </li>
+    <li>
+      <a href="{% url 'listVille' %}"
+        ><i class="material-icons">location_on</i>Ville disponible</a
+      >
+    </li>
+    <li>
+      <a href="{% url 'listVilla' %}"
+        ><i class="material-icons">apartment</i>Modèle des villas</a
+      >
+    </li>
+    <li>
+      <a href="{% url 'listResidence' %}"
+        ><i class="material-icons">map</i> Résidence actuelle</a
+      >
+    </li>
+    <li>
+      <a href="{% url 'listVillaU' %}"
+        ><i class="material-icons">location_city</i>Villa disponible</a
+      >
+    </li>
+    <li>
+      <a href="{% url 'listImage' %}"
+        ><i class="material-icons">image</i>Image des villas</a
+      >
+    </li>
+
+    <li>
+      <a href="{% url 'listReservation' %}">
+        <i class="material-icons">date_range</i><span>reservation</span></a
+      >
+    </li>
+  </ul>
+</nav>

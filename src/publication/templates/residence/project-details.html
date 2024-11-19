@@ -1,0 +1,273 @@
+{% extends "acceuil/index.html" %} {% load static %} {% block "titre" %} Détails
+du projet | Polypus Corporation S.A {% endblock %}
+{% block "contenu" %}
+<!--==============================
+    Breadcumb Porject
+============================== -->
+<div class="container th-container2" >
+    {% if image %}
+        <div class="breadcumb-wrapper"
+        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ image.0.image.url }}');
+background-repeat: no-repeat; background-size: cover; background-position: center; min-height: 100vh;">
+            {% for t in titre %}
+                <h1 class="breadcumb-title mb-1 fade-in">Résidence <span class="text-theme">{{ t.location }}</span></h1>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+<!--==============================
+Villa
+==============================-->
+
+<section class="space-top space-extra-bottom">
+  <div class="container">
+    <div class="row">
+        {% for villes in ville %}
+        <div class="col-lg-12">
+          <div class="page-single">
+              <img src="{{ villes.image.url }}" class="w-100" alt="..." height="200px" width="200px"/>
+              <h3 class="single-title">Plan de masse</h3>
+          </div>
+        </div>
+        {% endfor %}
+      {% for villas in villa %}
+        <div class="col-lg-6">
+          <div class="page-single" style="height: 100%;">
+            <div id="carouselExample{{ villas.lotVilla }}" class="carousel slide mb-2" data-bs-ride="carousel" data-bs-interval="3000">
+              <div class="carousel-inner">
+                {% for img in villas.images.all %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <img src="{{ img.image.url }}" class="w-100" alt="..." height="200px" width="200px"/>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+              <h3 class="single-title">{{ villas.nomVilla }}</h3>
+              <div class="service-content">
+                <p class="">{{ villas.descriptionVilla }}</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <!-- Modal en cas de changement d'avis de tantely
+                    <a class="h6 nav-btn"
+                       data-bs-toggle="modal"
+                       data-bs-target="#villa{{ villas.lotVilla }}"
+                    style="cursor: pointer; align-items: center;">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Détails
+                    </a>
+                    -->
+
+                    <a class="popup-image h6 nav-btn"
+                       href="{{villas.details.url}}"
+                       title="{{ villas.nomVilla }}"><i class="fa-solid fa-circle-info me-1"></i>Détails
+                    </a>
+
+                  <a href="javascript:void(0);"
+                     onclick="selectVilla('{{ villas.lotVilla }}')"
+                     class="h6 nav-btn"
+                  style="cursor: pointer; align-items: center;">
+                      <i class="fas fa-calendar"></i>
+                      Réservation</a>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Modal pour les détails-->
+
+        <div class="modal fade" id="villa{{ villas.lotVilla }}" tabindex="-1" aria-labelledby="{{villas.nomVilla}}" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header" >
+                <h3 class="text-center single-title" id="{{villas.nomVilla}}" style="color: rgb(6, 6, 6);">Détails pour {{villas.nomVilla}}</h3>
+              </div>
+              <div class="modal-body">
+                  <img src="{{villas.details.url}}" class="img-fluid" height="400px">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--End modal-->
+        {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+ Formulaire de reservations
+ ==============================================-->
+
+<section class="space">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 mb-5 mb-xl-0 wow fadeInLeft" data-wow-delay="0.2s">
+                    <h2 class="sec-title mb-45">Réservation de <span class="text-theme">Résidence</span></h2>
+                    <form action="{% url 'reservationPublication' %}" method="POST" class="" id="reservations" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Nom et prénoms">
+                            </div>
+                            <div class="form-group col-md-12 col-lg-6">
+                                <input type="number" class="form-control" name="number" id="number" placeholder="Téléphone">
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                            </div>
+                          <div class="form-group col-12 col-lg-6">
+                                <select name="residence" id="residence" class="select-form">
+                                    <option value="">Résidence</option>
+                                  {% for villes in adresse %}
+                                  {% for t in titre %}
+                                    <option value="{{ villes.codePostal }}" {% if t.location == villes.nomVille %} selected {% endif %}
+                                    >{{ villes.nomVille }}</option>
+                                    {% endfor %}
+                                  {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <select name="villaReserver" id="villaReserver" class="select-form">
+                                    <option value="">Villa à réserver</option>
+                                  {% for villas in villa %}
+                                    <option
+                                            value="{{ villas.lotVilla }}"
+                                    >{{ villas.nomVilla }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-12">
+                                <select name="lotVilla" id="lotVilla" class="select-form">
+                                    <option value="" selected>Lot du villa</option>
+                                  {% for uniques in unique %}
+                                  <option value="{{ uniques.lotVilla}}">{{ uniques.lotVilla}}</option>
+                                  {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-btn col-12 mt-10">
+                                <button class="th-btn" type="submit"><span class="line left"></span> Réserver <span class="line"></span></button>
+                            </div>
+                        </div>
+                        <script>
+    window.onload = function() {
+        {% if messages %}
+            {% for message in messages %}
+                Swal.fire({
+                    title: 'Notification',
+                    text: "{{ message }}",
+                    icon: "{{ message.tags }}",  // success, error, warning, info
+                    confirmButtonText: 'OK',
+                    background: '#333',  // Fond noir de la boîte
+                    color: '#fff',  // Texte blanc
+                    confirmButtonColor: '#FECC52',  // Bouton vert pour coordonner avec ton thème
+                    iconColor: '#FECC52',  // Couleur de l'icône
+                    customClass: {
+                        popup: 'swal2-dark-popup',  // Style de la popup
+                    }
+                });
+            {% endfor %}
+        {% endif %}
+    };
+</script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--==============================
+Project Area
+==============================-->
+<section class=" overflow-hidden" id="projet">
+  <div class="container">
+    <div class="row justify-content-md-between align-items-end">
+      <div class="col-md-8 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="title-area">
+          <span class="big-title">R.</span>
+          <h2 class="sec-title">
+            Autres
+            <span class="text-theme">residences</span>
+          </h2>
+        </div>
+      </div>
+      <div class="col-auto mt-n4 mt-lg-0 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="sec-btn">
+            {% if ville %}
+          <a href="{% url 'projetDetailPublication' ville.0.nomVille %}" class="link-btn">Explorer</a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row variable-width" id="projectSlide1">
+      {% for all in villaAll %}
+    <div class="col-auto">
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="{{ all.images.first.image.url}}"
+                width="500px"
+                height="390px"
+                alt="project image"
+              />
+            </div>
+            <h3 class="h5 project-title">
+              {% if all.villa.first.villeVilla %}
+              <a
+                href="{% url 'projetDetailPublication' all.villa.first.villeVilla %}"
+                >{{ all.nomVilla }}</a
+              >
+              {% else %}
+              <a
+                href="#"
+                >{{ all.nomVilla }}</a
+              >
+              {% endif %}
+            </h3>
+            {% if all.villa.first.villeVilla %}
+            <p class="project-map">
+              <i class="fal fa-location-dot"></i>{{ all.villa.first.villeVilla}}
+            </p>
+            {% else %}
+            <p class="project-map">
+              <i class="fal fa-location-dot"></i>#
+            </p>
+            {% endif %}
+            <div class="project-number">
+              {% if all.villa.first.villeVilla %}
+              <a
+                href="{% url 'projetDetailPublication' all.villa.first.villeVilla %}#reservations"
+                ><i class="fas fa-calendar"></i
+              ></a>
+              {% else %}
+              <a
+                href="#"
+                ><i class="fas fa-calendar"></i
+              ></a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+  </div>
+  <div class="slider-nav-wrap">
+    <div class="slider-nav">
+      <button data-slick-prev="#projectSlide1" class="nav-btn">
+        <i class="fal fa-long-arrow-left"></i>
+      </button>
+      <div class="custom-dots"></div>
+      <button data-slick-next="#projectSlide1" class="nav-btn">
+        <i class="fal fa-long-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

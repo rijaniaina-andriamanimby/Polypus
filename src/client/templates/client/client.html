@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% block titre %} Client | Polypus Corporation S.A {% endblock %}
+{% block recherche %}
+<div class="xp-searchbar">
+  <form method="POST" action="{% url 'listDesClient' %}" class="d-flex">
+    {% csrf_token %}
+    <div class="input-group">
+      <input
+        type="search"
+        name="rechercheClient"
+        class="form-control"
+        placeholder="Rechercher un client"
+        aria-label="Rechercher un client"
+        aria-describedby="button-addon2"
+        required
+      />
+      <button
+        class="btn d-flex align-items-center"
+        type="submit"
+        id="button-addon2"
+      >
+        <i class="material-icons">search</i> Rechercher
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% block grand_titre %} Gestions des clients {% endblock %}
+{% block contenu %}
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      <div
+        class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center"
+      >
+        <h2 class="ml-lg-2">Listes des clients</h2>
+      </div>
+      <div
+        class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center"
+      >
+        <a href="{% url 'ajouterDesClients' %}" class="btn btn-success">
+          <i class="material-icons">&#xE147;</i>
+          <span>Ajouter</span>
+        </a>
+        <a href="{% url 'listClientReserver'%}" class="btn btn-success"
+          ><i class="material-icons">person</i
+          ><span>Client ayant reservez</span></a
+        >
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped table-hover text-center">
+    <thead>
+      <tr>
+        <th style="width: 250px">Nom et prénoms</th>
+        <th>Téléphone</th>
+        <th>E-mail</th>
+        <th>Employer contacter</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for clients in client %}
+      <tr>
+        <td style="width: 250px">{{clients.nomCompletClient}}</td>
+        <td>{{clients.telephoneClient}}</td>
+        <td style="text-transform: lowercase">{{clients.emailClient}}</td>
+        <td>{{clients.employerContacter}}</td>
+        <td>
+          <a href="{% url 'modifierUnClient' clients.telephoneClient %}">
+            <i class="material-icons" data-toggle="tooltip" title="Edit"
+              >&#xE254;</i
+            >
+          </a>
+          <a href="#" onclick="confirmDelete('{{clients.telephoneClient}}')">
+            <i class="material-icons" data-toggle="tooltip" title="Delete"
+              >&#xE872;</i
+            >
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="clearfix">
+    <ul class="pagination">
+      {% if client.has_previous %}
+      <li class="page-item">
+        <a href="?page={{client.previous_page_number}}">Précédent</a>
+      </li>
+      {% endif %} {% for num in client.paginator.page_range %}
+      <li class="page-item {% if client.number == num %}active{% endif %}">
+        <a href="?page={{num}}" class="page-link">{{num}}</a>
+      </li>
+      {% endfor %} {% if client.has_next %}
+      <li class="page-item">
+        <a href="?page={{client.next_page_number}}" class="page-link"
+          >Suivant</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+<script>
+  function confirmDelete(telephoneClient) {
+    // Personnalisation de la boîte de dialogue
+    console.log(telephoneClient);
+    Swal.fire({
+      title: "Êtes-vous sûr ?",
+      text: "Cette action est irréversible. Voulez-vous vraiment supprimer ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, supprimer",
+      cancelButtonText: "Annuler",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Redirection vers l'URL de suppression si la confirmation est donnée
+        window.location.href =
+          "{% url 'supprimerUnClient' 'ID_PLACEHOLDER' %}".replace(
+            "ID_PLACEHOLDER",
+            telephoneClient
+          );
+      }
+    });
+  }
+</script>
+{% endblock %}

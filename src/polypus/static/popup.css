@@ -1,0 +1,59 @@
+ body{
+    margin: 0px;
+    height: 100vh;
+    font-family: "open sans",sans-serif;
+    background: linear-gradient(to right,#aab2b6,#205172);
+    background-image:url("assets/img/polypus/acceuil/k3.jpg");
+ }
+ .pop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+ }
+ .pop a {
+    padding: 10px 20px;
+    background: #f3f0f0;
+    color:#111 ;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+ }
+#popup {
+
+position: fixed;
+top: 0px;
+left: 0px;
+width: 100vw;
+height: 100vh;
+background: rgba(0,0,0, 0,75);
+display:none ;
+
+}
+#popup .popup-pop{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 400px;
+padding: 10px 20px;
+background: #0c0c0c;
+
+}
+#popup a.close-popup {
+    position:absolute ;
+    top:0px ;
+    right:20px ;
+    font-size:20px ;
+    font-weight: 600;
+    text-decoration: none;
+}
+#popup:target {
+    display: block;
+
+}
+.avatar {
+    margin:5px 0px 0px ;
+    text-align:center ;
+}

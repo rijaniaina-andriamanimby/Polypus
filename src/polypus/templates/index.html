@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <title>
+      {% block titre %} Acceuil | Polypus Corporation S.A {% endblock %}
+    </title>
+
+    <!-- Favicons - Place favicon.ico in the root directory -->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="{% static 'assets/img/favicons/apple-icon-57x57.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="{% static 'assets/img/favicons/apple-icon-60x60.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="{% static 'assets/img/favicons/apple-icon-72x72.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="{% static 'assets/img/favicons/apple-icon-76x76.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="{% static 'assets/img/favicons/apple-icon-114x114.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="{% static 'assets/img/favicons/apple-icon-120x120.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="{% static 'assets/img/favicons/apple-icon-144x144.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="{% static 'assets/img/favicons/apple-icon-152x152.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'assets/img/favicons/apple-icon-180x180.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="{% static 'assets/img/favicons/android-icon-192x192.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'assets/img/favicons/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="{% static 'assets/img/favicons/favicon-96x96.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'assets/img/favicons/favicon-16x16.png' %}"
+    />
+    <link
+      rel="manifest"
+      href="{% static 'assets/img/favicons/manifest.json' %}"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="{% static 'assets/img/favicons/ms-icon-144x144.png' %}"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!----css3---->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--google material icon-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- SweetAlert CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/chart.js' %}"></script>
+    <style>
+      .cursor-dot {
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 2px solid black;
+        box-sizing: border-box;
+      }
+
+      .cursor-outline {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 2px hsla(0, 90%, 23%, 0.5);
+      }
+
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 99999;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <div class="wrapper">
+      <div class="body-overlay"></div>
+      <!-------------------------sidebar------------>
+      <!-- Sidebar  -->
+      {% include "./nav-bar.html" %}
+      <!--------page-content---------------->
+      <div id="content">
+        <!--top--navbar----design--------->
+
+        <div class="top-navbar">
+          <div class="xp-topbar">
+            <!-- Start XP Row -->
+            <div class="row d-flex justify-content-between">
+              <!-- Start XP Col -->
+              <div
+                class="col-1 col-md-1 col-lg-1 order-2 order-md-1 align-self-center"
+              >
+                <div class="xp-menubar">
+                  <span class="material-icons text-white"
+                    >signal_cellular_alt</span
+                  >
+                </div>
+              </div>
+              <!-- End XP Col -->
+
+              <!-- Start XP Col -->
+              <div class="order-4 order-md-3 ml-md-auto d-flex">
+                <!-- Search bar -->
+                {% block recherche %} {% endblock %}
+
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link text-white btn"
+                      href="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="material-icons">more_vert</i>
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-right"
+                      aria-labelledby="navbarDropdown"
+                      style="
+                        background-color: #dce1e3;
+                        transition: all 0.3s ease-in-out;
+                      "
+                    >
+                      <!-- User info with icon -->
+                      <div
+                        class="d-flex align-items-center p-3"
+                        style="
+                          background-color: #f1f1f1;
+                          border-bottom: 1px solid #ddd;
+                        "
+                      >
+                        <i
+                          class="material-icons"
+                          style="font-size: 2rem; color: #333"
+                          >account_circle</i
+                        >
+                        <div class="ml-2">
+                          <strong
+                            >{{ user.first_name }} {{ user.last_name }}</strong
+                          >
+                        </div>
+                      </div>
+
+                      <!-- Dropdown options -->
+                      <a
+                        class="dropdown-item d-flex align-items-center"
+                        href="{% url 'logout' %}"
+                        style="transition: all 0.2s"
+                      >
+                        <i class="material-icons m-2" style="color: #f44336"
+                          >logout</i
+                        >Déconnexion
+                      </a>
+
+                      <a
+                        class="dropdown-item d-flex align-items-center"
+                        href="{% url 'ChangePassword' %}"
+                        style="transition: all 0.2s"
+                      >
+                        <i class="material-icons m-2" style="color: #ffc107"
+                          >password</i
+                        >
+                        Modifier le mot de passe
+                      </a>
+
+                      <a
+                        class="dropdown-item d-flex align-items-center"
+                        href="{% url 'register' %}"
+                        style="transition: all 0.2s"
+                      >
+                        <i class="material-icons m-2" style="color: #4caf50"
+                          >add_circle</i
+                        >
+                        Créer un autre administrateur
+                      </a>
+
+                      <a
+                        class="dropdown-item d-flex align-items-center"
+                        href="{% url 'listUser' %}"
+                        style="transition: all 0.2s"
+                      >
+                        <i class="material-icons m-2" style="color: #2196f3"
+                          >list</i
+                        >
+                        Liste des administrateurs
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- End XP Row -->
+          <div class="xp-breadcrumbbar text-center">
+            <h1 class="page-title">
+              {% block grand_titre %} Polypus Corporation S.A {% endblock %}
+            </h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+            </ol>
+          </div>
+        </div>
+        <!--------main-content------------->
+        <div class="main-content">
+          <div class="row">
+            <div class="col-md-12">
+              {% block contenu %}
+              <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                  <!-- Bar Chart -->
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Diagramme en bâton des visiteurs, des emails reçu et des
+                        réservations
+                      </h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Donut Chart -->
+                <div class="col-xl-4 col-lg-5">
+                  <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Diagramme en pie
+                      </h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                      <div class="chart-pie pt-4">
+                        <canvas id="visitsChart"></canvas>
+                      </div>
+                      <hr />
+                      Visiteurs, et emails reçu
+                      <code></code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+
+
+                // Récupérer les données de visites et dates du contexte Django
+                const datesX = {{ dates|safe }};
+                              const visitsCounts = {{ visits_counts }};
+                              const mail = {{client_count}};
+                              const reservation = {{reservation_count}}
+
+                              // Configuration du graphique
+                              const ctx = document.getElementById('visitsChart').getContext('2d');
+                              const visitsChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                          labels: ["Visiteur", "Email", "Réservations"],
+                          datasets: [{
+                            data: [visitsCounts, mail, reservation],
+                            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                            hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                            hoverBorderColor: "rgba(234, 236, 244, 1)",
+                          }],
+                        },
+                        options: {
+                          maintainAspectRatio: false,
+                          tooltips: {
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            caretPadding: 10,
+                          },
+                          legend: {
+                            display: false
+                          },
+                          cutoutPercentage: 80,
+                        },
+                      });
+
+
+
+                      var chartX = document.getElementById("myBarChart");
+                      var myBarChart = new Chart(chartX, {
+                                      type: 'bar',
+                                      data: {
+                                        labels: ['Réservations', 'Email reçu','Visiteur'],
+                                        datasets: [{
+                                          label: 'Réservations',
+                                          data: [reservation, 0, 0],
+                                          backgroundColor:'rgba(47, 200, 44, 0.8)',
+                                          borderWidth: 1
+                                        },{
+                                          label: 'Email reçu',
+                                          data: [0, mail, 0],
+                                          backgroundColor: 'rgba(60, 55, 200, 0.8)',
+                                          borderWidth: 1
+                                        },{
+                                          label: 'Visiteur',
+                                          data: [0, 0, visitsCounts],
+                                          backgroundColor: 'rgba(200, 60, 55, 0.7)',
+                                          borderWidth: 1
+                                        }
+                                  ]
+                                      },
+                                      options: {
+                          maintainAspectRatio: true,
+                          layout: {
+                            padding: {
+                              left: 10,
+                              right: 25,
+                              top: 25,
+                              bottom: 0
+                            }
+                          },
+                          scales: {
+                            xAxes: [{
+                              time: {
+                                unit: 'month'
+                              },
+                              gridLines: {
+                                display: false,
+                                drawBorder: false
+                              },
+                              ticks: {
+                                maxTicksLimit: 6
+                              },
+                              maxBarThickness: 25,
+                            }],
+                            yAxes: [{
+                              ticks: {
+                                min: 0,
+                                max: 15000,
+                                maxTicksLimit: 5,
+                                padding: 10,
+                                // Include a dollar sign in the ticks
+                                callback: function(value, index, values) {
+                                  return '$' + number_format(value);
+                                }
+                              },
+                              gridLines: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                              }
+                            }],
+                          },
+                          legend: {
+                            display: false
+                          },
+                          tooltips: {
+                            titleMarginBottom: 10,
+                            titleFontColor: '#6e707e',
+                            titleFontSize: 14,
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            caretPadding: 10,
+                          },
+                        }
+                                    });
+              </script>
+              {% endblock %}
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER -->
+        {% include "./footer.html" %}
+      </div>
+    </div>
+    <!----------html code complete----------->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".xp-menubar").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $("#content").toggleClass("active");
+        });
+
+        $(".xp-menubar,.body-overlay").on("click", function () {
+          $("#sidebar,.body-overlay").toggleClass("show-nav");
+        });
+      });
+    </script>
+    <script>
+      // script for cursor
+      const cursorDot = document.querySelector("[data-cursor-dot]");
+      const cursorOutline = document.querySelector("[data-cursor-outline]");
+      window.addEventListener("mousemove", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        console.log(posX);
+        cursorDot.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          { duration: 1000, fill: "forwards" }
+        );
+      });
+      window.addEventListener("focusin", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        console.log(posX);
+        //cursorOutline.style.left = `${posX}px`;
+        //cursorOutline.style.top = `${posY}px`;
+
+        cursorOutline.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          { duration: 5000, fill: "forwards" }
+        );
+      });
+
+      // xxxxxxxxxxxxxxx
+
+      //xxxxxxxxxxxxxxxxx
+    </script>
+    {% if messages %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        {% for message in messages %}
+          Swal.fire({
+            {% if message.tags == 'success' %}
+            icon: 'success',
+            title: 'Succès',
+            {% else %}
+            icon: 'error',
+            title: 'Erreur',
+            {% endif %}
+            text: "{{ message|escapejs }}",
+            showConfirmButton: true,  // Affiche le bouton "OK"
+            confirmButtonText: 'OK',  // Texte du bouton
+            confirmButtonColor: '#3085d6' // Personnaliser la couleur du bouton si tu veux
+          });
+        {% endfor %}
+      });
+    </script>
+    {% endif %}
+  </body>
+</html>

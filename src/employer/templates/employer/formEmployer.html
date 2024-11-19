@@ -1,0 +1,34 @@
+{% extends 'index.html' %} {% block titre %} Formulaire | Polypus Corporation
+S.A {% endblock %} {% load crispy_forms_tags %} {% block contenu %}
+
+<div class="container mb-4">
+  <div class="card">
+    <div class="card-header text-white" style="background-color: #353b48">
+      <h4 class="mb-0 text-center">
+        Formulaire pour {{form.instance.pk | yesno:"Modification d'un employer,Ajout d'un nouvel employer"}}
+      </h4>
+    </div>
+    <div class="card-body">
+      <form method="post" action="" autocomplete="off">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="row d-flex">
+          <div class="col text-left">
+            <button type="submit" class="btn btn-success d-flex">
+              <i class="material-icons">check_circle</i> Valider
+            </button>
+          </div>
+          <div class="col text-right">
+            <button class="btn btn-success">
+              <a href="{% url 'listEmployer' %}" class="d-flex text-white"
+                ><i class="material-icons px-1">cancel</i> Annuler</a
+              >
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
