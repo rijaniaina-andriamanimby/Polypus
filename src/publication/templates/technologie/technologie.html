@@ -1,16 +1,25 @@
-{% extends "acceuil/index.html" %} {% load static %} {% block "titre" %}
-Technologie de construction | Polypus Corporation S.A {% endblock %} {% block
-mobile %} {% for adresses in adresse %}
+{% extends "acceuil/index.html" %} 
+{% load static %} 
+{% block "titre" %}
+Technologie de construction | Polypus Corporation S.A 
+{% endblock %} 
+{% block mobile %} 
+{% for adresses in adresse %}
 <ul class="sub-menu">
   <li><a href="#">{{ adresses.nomVille }}</a></li>
 </ul>
-{% endfor %} {% endblock %} {% block lg %} {% for adresses in adresse %}
+{% endfor %} 
+{% endblock %} 
+{% block lg %} 
+{% for adresses in adresse %}
 <li>
   <a href="{% url 'projetDetailPublication' adresses.nomVille %}"
     >{{ adresses.nomVille }}</a
   >
 </li>
-{% endfor %} {% endblock %} {% block "contenu" %}
+{% endfor %} 
+{% endblock %} 
+{% block "contenu" %}
 <!--==============================
     Breadcumb
 ============================== -->
